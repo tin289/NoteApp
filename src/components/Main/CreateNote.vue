@@ -19,7 +19,7 @@
               id="title"
               name="title"
               type="text"
-              v-model="createTitle"
+              v-model="title"
             />
           </div>
 
@@ -30,7 +30,7 @@
               name="description"
               type="text"
               rows="3"
-              v-model="createDes"
+              v-model="des"
             ></textarea>
           </div>
 
@@ -40,7 +40,7 @@
               id="link"
               name="link"
               type="url"
-              v-model="createLink"
+              v-model="link"
             />
           </div>
         </form>
@@ -56,34 +56,22 @@
 
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-    },
-    des: {
-      type: String,
-    },
-    link: {
-      type: String,
-    },
-  },
-
   data() {
     return {
       note: false,
-      createTitle: this.title,
-      createDes:this.des,
-      createLink: this.link,
+      title: '',
+      des: '',
+      link: ''
     };
   },
 
 
   methods: {
     submitData() {
-      if (this.createTitle.length > 0 && this.createDes.length > 0) {
-        const showTitle = this.createTitle
-        const showDes = this.createDes
-        const showLink = this.createLink
+      if (this.title.length > 0 && this.des.length > 0) {
+        const showTitle = this.title
+        const showDes = this.des
+        const showLink = this.link
 
         this.$emit('sendData', {
           showTitle,
@@ -92,9 +80,9 @@ export default {
         })
 
         //clean
-        this.createTitle = ''
-        this.createDes = ''
-        this.createLink = ''
+        this.title = ''
+        this.des = ''
+        this.link = ''
         this.note = false
       } 
     },

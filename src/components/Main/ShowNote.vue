@@ -3,24 +3,24 @@
     <div class="note-show">
       <div class="note">
         <header>
-          <h3>{{ note.displayTitle }}</h3>
+          <h3>{{ noteDisplay.title }}</h3>
           <div class="note-icon">
             <button>
               <img src="../../assets/style/icon/edit.png" alt="edit" />
             </button>
-            <button>
-              <img src="../../assets/style/icon/delete.png" alt="delete" />
+            <button @click="DeleteNote(noteDisplay)">
+              <img src="../../assets/style/icon/delete.png" alt="delete"/>
             </button>
           </div>
         </header>
 
         <div class="note-detail">
           <h3>Detail</h3>
-          <p>{{ note.displayDes }} </p>
+          <p>{{ noteDisplay.des }} </p>
         </div>
 
         <div class="note-link">
-          <a href="" target="_bank">Click here ${'note.displayLink'}</a>
+          <a :href="noteDisplay.link" target="_bank">Click here</a>
         </div>
       </div>
     </div>
@@ -30,19 +30,13 @@
 <script>
 
 export default {
-  // props: {
-  //   title: {
-  //     type: String,
-  //   },
-  //   des: {
-  //     type: String,
-  //   },
-  //   link: {
-  //     type: String,
-  //   },
-  // },
+  props: ['noteDisplay'],
 
-  props: ['note'],
+  methods: {
+    DeleteNote(note) {
+      this.$emit('noteDelete', note)
+    }
+  }
 
 };
 </script>

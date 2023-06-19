@@ -18,7 +18,7 @@
       </div>
 
       <div class="header-log-out">
-        <button>
+        <button @click="LogOut">
           <img src="../../assets/style/icon/logout.png" alt="log-out" />
           Log Out
         </button>
@@ -28,7 +28,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  LogOut() {
+    this.$emit('LogOut')
+  }
+};
 </script>
 
 <style scoped>

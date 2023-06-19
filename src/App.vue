@@ -1,16 +1,34 @@
 <template>
   <div class="container">
-    <home-page></home-page>
+    <log-in v-if="show" @startNote="Start" ></log-in>
+    <home-page v-else @LogOut="Quit"></home-page>
   </div>
 </template>
 
 <script>
 import HomePage from './components/Main/HomePage.vue'
+import LogIn from './components/LogIn/LogIn.vue'
 
 export default {
   name: 'App',
   components: {
-    HomePage
+    HomePage,
+    LogIn
+  },
+  
+  data() {
+    return {
+      show: true,
+    }
+  },
+
+  methods: {
+    Start() {
+      this.show = false
+    },
+    Quit() {
+     this.show = true
+    }
   }
 }
 </script>
